@@ -6,13 +6,13 @@ from email.mime.text import MIMEText
 
 def gmail_send_message(subject, message_text):
 
-    with open("../instance/pythonpass", 'r') as file:
+    with open("instance/pythonpass", 'r') as file:
         email_password = file.read()
 
-    with open("../instance/toEmail", 'r') as file:
+    with open("instance/toEmail", 'r') as file:
         to_address = file.read()
         
-    with open("../instance/fromEmail", 'r') as file:
+    with open("instance/fromEmail", 'r') as file:
         from_address = file.read()
         
     em = MIMEMultipart('alternative')
