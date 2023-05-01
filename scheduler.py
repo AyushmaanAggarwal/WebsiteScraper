@@ -1,7 +1,8 @@
 import schedule
 import courseScraper
 import time
-from datetime import datetime, timedelta
+from sendEmail import gmail_send_message
+
 
 
 def job():
@@ -10,6 +11,8 @@ def job():
 
 
 if __name__ == '__main__':
+    gmail_send_message("Script Started", f"Begin scanning websites: {courseScraper.get_sites()}")
+
     startTime = 2*3600
     endTime = 5*3600
     # Run every 2 to 5 hours.

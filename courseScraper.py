@@ -1,5 +1,4 @@
 import requests
-import pickle
 import json
 from jsondiff import diff
 from os.path import exists
