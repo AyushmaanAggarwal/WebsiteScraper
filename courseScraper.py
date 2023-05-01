@@ -54,6 +54,8 @@ def run():
                 gmail_send_message(f"Change in {courseName}", f"Website: {courseName}\n{diff(old_request, new_request)}")
             else:
                 noChange.append(site)
+                gmail_send_message(f"No change in {courseName}", f"Website: {courseName}")
+
 
         save_request(new_request, fileName=oldSiteFileName)
 
