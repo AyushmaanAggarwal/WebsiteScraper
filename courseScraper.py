@@ -25,7 +25,7 @@ def request_equals(request1, request2):
     return diff(request1, request2)=={}
 
 
-def get_sites():
+def get_sites(absolutePath):
     sites = []
     with open(absolutePath + "instance/website_urls", "r") as f:
         for line in f:
@@ -34,7 +34,7 @@ def get_sites():
 
 
 def run(absolutePath):
-    sites = get_sites()
+    sites = get_sites(absolutePath)
     noChange = []
     changes = []
     request = {}
@@ -54,7 +54,6 @@ def run(absolutePath):
                 noChange.append(site)
                 gmail_send_message(f"No change in {courseName}", f"Website: {courseName}", absolutePath)
 
-
         save_request(new_request, fileName=oldSiteFileName)
 
     print(f"Sites: {sites}")
@@ -62,6 +61,5 @@ def run(absolutePath):
     print(f"Unchanged sites: {noChange}")
 
 
-
 if __name__ == '__main__':
-    run()
+    run("/home/ayushmaan/WebsiteScraper/")
