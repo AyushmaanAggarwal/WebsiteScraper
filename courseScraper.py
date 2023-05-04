@@ -4,9 +4,6 @@ from jsondiff import diff
 from os.path import exists
 from sendEmail import gmail_send_message
 
-absolutePath = "/home/ayushmaan/WebsiteScraper/"
-
-
 def get_request(url):
     r = requests.get(url)
     for line in r.text.split("\n"):
@@ -36,7 +33,7 @@ def get_sites():
     return sites
 
 
-def run():
+def run(absolutePath):
     sites = get_sites()
     noChange = []
     changes = []
@@ -52,10 +49,10 @@ def run():
 
             if not request_equals(new_request, old_request):
                 changes.append(site)
-                gmail_send_message(f"Change in {courseName}", f"Website: {courseName}\n{diff(old_request, new_request)}")
+                gmail_send_message(f"Change in {courseName}", f"Website: {courseName}\n{diff(old_request, new_request)}", absolutePath)
             else:
                 noChange.append(site)
-                gmail_send_message(f"No change in {courseName}", f"Website: {courseName}")
+                gmail_send_message(f"No change in {courseName}", f"Website: {courseName}", absolutePath)
 
 
         save_request(new_request, fileName=oldSiteFileName)

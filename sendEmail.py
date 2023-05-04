@@ -4,15 +4,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def gmail_send_message(subject, message_text):
+def gmail_send_message(subject, message_text, path):
 
-    with open("instance/pythonpass", 'r') as file:
+    with open(path+"instance/pythonpass", 'r') as file:
         email_password = file.read()
 
-    with open("instance/toEmail", 'r') as file:
+    with open(path+"instance/toEmail", 'r') as file:
         to_address = file.read()
         
-    with open("instance/fromEmail", 'r') as file:
+    with open(path+"instance/fromEmail", 'r') as file:
         from_address = file.read()
         
     em = MIMEMultipart('alternative')

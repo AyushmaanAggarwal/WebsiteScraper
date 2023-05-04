@@ -6,7 +6,7 @@ from sendEmail import gmail_send_message
 
 
 def job():
-    courseScraper.run()
+    courseScraper.run("/home/ayushmaan/WebsiteScraper/")
     print("Completed Job")
 
 
