@@ -4,6 +4,8 @@ from jsondiff import diff
 from os.path import exists
 from sendEmail import gmail_send_message
 
+absolutePath = "/home/ayushmaan/WebsiteScraper/"
+
 
 def get_request(url):
     r = requests.get(url)
@@ -28,7 +30,7 @@ def request_equals(request1, request2):
 
 def get_sites():
     sites = []
-    with open("instance/website_urls", "r") as f:
+    with open(absolutePath + "instance/website_urls", "r") as f:
         for line in f:
             sites.append(line)
     return sites
@@ -43,7 +45,7 @@ def run():
         site = sites[siteNum]
         new_request = get_request(site)
         courseName = new_request["displayName"]
-        oldSiteFileName = f"instance/websites/{courseName}.json"
+        oldSiteFileName = absolutePath + f"instance/websites/{courseName}.json"
 
         if exists(oldSiteFileName):
             old_request = get_old_request(oldSiteFileName)
