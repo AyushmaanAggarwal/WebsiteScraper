@@ -11,7 +11,7 @@ def job():
 
 
 if __name__ == '__main__':
-    gmail_send_message("Script Started", f"Begin scanning websites: {courseScraper.get_sites('/home/ayushmaan/WebsiteScraper/')}")
+    gmail_send_message("Script Started", f"Begin scanning websites: {courseScraper.get_sites('/home/ayushmaan/WebsiteScraper/')}", '/home/ayushmaan/WebsiteScraper/')
 
     startTime = 2*3600
     endTime = 5*3600
