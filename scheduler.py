@@ -1,17 +1,17 @@
+import os
+import time
 import schedule
 import courseScraper
-import time
 from sendEmail import gmail_send_message
 
 
-
 def job():
-    courseScraper.run("/home/ayushmaan/WebsiteScraper/")
+    courseScraper.run(os.path.abspath(os.getcwd())+'/')
     print("Completed Job")
 
 
 if __name__ == '__main__':
-    gmail_send_message("Script Started", f"Begin scanning websites: {courseScraper.get_sites('/home/ayushmaan/WebsiteScraper/')}", '/home/ayushmaan/WebsiteScraper/')
+    gmail_send_message("Script Started", f"Begin scanning websites: {courseScraper.get_sites(os.path.abspath(os.getcwd())+'/')}", os.path.abspath(os.getcwd())+'/')
 
     startTime = 2*3600
     endTime = 5*3600
