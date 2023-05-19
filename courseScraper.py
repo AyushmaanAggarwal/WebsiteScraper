@@ -1,5 +1,6 @@
-import requests
+import os
 import json
+import requests
 from jsondiff import diff
 from os.path import exists
 from sendEmail import gmail_send_message
@@ -49,9 +50,11 @@ def run(absolutePath):
 
             if not request_equals(new_request, old_request):
                 changes.append(site)
+                print(f"Website: {courseName}\n{diff(old_request, new_request)}")
                 gmail_send_message(f"Change in {courseName}", f"Website: {courseName}\n{diff(old_request, new_request)}", absolutePath)
             else:
                 noChange.append(site)
+                print(f"No Change: Website: {courseName}")
                 gmail_send_message(f"No change in {courseName}", f"Website: {courseName}", absolutePath)
 
         save_request(new_request, fileName=oldSiteFileName)
@@ -62,4 +65,4 @@ def run(absolutePath):
 
 
 if __name__ == '__main__':
-    run("/home/ayushmaan/WebsiteScraper/")
+    run(os.path.abspath(os.getcwd())+'/')
