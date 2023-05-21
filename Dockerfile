@@ -13,7 +13,7 @@ COPY . .
 RUN apk add shadow
 RUN addgroup -S dockeruser && adduser -h /usr/src/app -S dockeruser -G dockeruser
 RUN chown -R dockeruser:dockeruser /usr/src/app/instance/websites
-RUN usermod -s /usr/sbin/ls  root
+RUN usermod -s /usr/sbin/nologin  root
 RUN apk del shadow
 USER dockeruser
 
