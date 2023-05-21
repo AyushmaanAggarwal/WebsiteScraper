@@ -5,6 +5,7 @@ from jsondiff import diff
 from os.path import exists
 from sendEmail import gmail_send_message
 
+
 def get_request(url):
     r = requests.get(url)
     for line in r.text.split("\n"):
@@ -23,7 +24,7 @@ def get_old_request(fileName):
 
 
 def request_equals(request1, request2):
-    return diff(request1, request2)=={}
+    return diff(request1, request2) == {}
 
 
 def get_sites(absolutePath):
@@ -51,7 +52,8 @@ def run(absolutePath):
             if not request_equals(new_request, old_request):
                 changes.append(site)
                 print(f"Website: {courseName}\n{diff(old_request, new_request)}")
-                gmail_send_message(f"Change in {courseName}", f"Website: {courseName}\n{diff(old_request, new_request)}", absolutePath)
+                gmail_send_message(f"Change in {courseName}",
+                                   f"Website: {courseName}\n{diff(old_request, new_request)}", absolutePath)
             else:
                 noChange.append(site)
                 print(f"No Change: Website: {courseName}")
@@ -65,4 +67,4 @@ def run(absolutePath):
 
 
 if __name__ == '__main__':
-    run(os.path.abspath(os.getcwd())+'/')
+    run(os.path.abspath(os.getcwd()) + '/')
