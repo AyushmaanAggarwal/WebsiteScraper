@@ -57,8 +57,7 @@ def run(absolutePath):
             else:
                 noChange.append(site)
                 print(f"No Change: Website: {courseName}")
-                gmail_send_message(f"No change in {courseName}", f"Website: {courseName}", absolutePath)
-
+                # gmail_send_message(f"No change in {courseName}", f"Website: {courseName}", absolutePath)
         save_request(new_request, fileName=oldSiteFileName)
 
     print(f"Sites: {sites}")

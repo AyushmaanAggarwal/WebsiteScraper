@@ -5,16 +5,15 @@ from email.mime.text import MIMEText
 
 
 def gmail_send_message(subject, message_text, path):
-
-    with open(path+"instance/pythonpass", 'r') as file:
+    with open(path + "instance/pythonpass", 'r') as file:
         email_password = file.read()
 
-    with open(path+"instance/toEmail", 'r') as file:
+    with open(path + "instance/toEmail", 'r') as file:
         to_address = file.read()
-        
-    with open(path+"instance/fromEmail", 'r') as file:
+
+    with open(path + "instance/fromEmail", 'r') as file:
         from_address = file.read()
-        
+
     em = MIMEMultipart('alternative')
     em['From'] = from_address
     em['To'] = to_address
@@ -31,4 +30,3 @@ def gmail_send_message(subject, message_text, path):
         return "Email Sent!"
     except:
         return "Email failed to send"
-    
